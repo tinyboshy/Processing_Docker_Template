@@ -20,10 +20,10 @@ RUN apt update && \
                 libxtst6
 
 WORKDIR /tmp
-RUN wget https://github.com/processing/processing4/releases/download/processing-1277-4.0b2/processing-4.0b2-linux64.tgz
-RUN tar -xzvf processing-4.0b2-linux64.tgz
-RUN mv processing-4.0b2 /opt
-RUN rm -rf /tmp/processing-4.0b2-linux64.tgz
+RUN wget https://github.com/processing/processing4/releases/download/processing-1277-4.0b2/processing-4.0b2-linux64.tgz && \
+    tar -xzvf processing-4.0b2-linux64.tgz && \
+    mv processing-4.0b2 /opt && \
+    rm -rf /tmp/processing-4.0b2-linux64.tgz
                 
 ARG DOCKER_UID=1000
 ARG DOCKER_USER=docker
