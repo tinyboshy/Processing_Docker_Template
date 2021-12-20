@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            shm_size: '8gb'
+        shm_size: '8gb'
+        container_name: processing_docker_template
+        volumes:
+            - ./:/home/docker/work
+            - /tmp/.X11-unix:/tmp/.X11-unix
+        tty: true
+        stdin_open: true
+        environment:
+            - DISPLAY=${DISPLAY}
+            - QT_X11_NO_MITSHM=1
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                    - capabilities: [gpu]
